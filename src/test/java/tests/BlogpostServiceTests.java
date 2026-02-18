@@ -23,7 +23,7 @@ public class BlogpostServiceTests extends BaseTest {
         //  when
         response = blogpostService
                 .getListOfBlogposts()
-        // then
+                // then
                 .shouldHave(statusCode(200))
                 .shouldHave(contentType(ContentType.JSON));
 
@@ -38,14 +38,13 @@ public class BlogpostServiceTests extends BaseTest {
         //        when
         response = blogpostService
                 .createBlogpost(payload)
-        //        then
+                //        then
                 .shouldHave(statusCode(201))
                 .shouldHave(contentType(ContentType.JSON));
 
         assertions
                 .assertBlogpostsServiceResponse(response)
                 .shouldHaveBody_postBlogpost(payload.getUserId(), payload.getTitle(), payload.getBody());
-
     }
 
 
@@ -57,7 +56,7 @@ public class BlogpostServiceTests extends BaseTest {
         //        when
         response = blogpostService
                 .updateBlogpost(updatedPayload, blogpostId)
-        //        then
+                //        then
                 .shouldHave(statusCode(200))
                 .shouldHave(contentType(ContentType.JSON));
 
@@ -65,7 +64,6 @@ public class BlogpostServiceTests extends BaseTest {
                 .assertBlogpostsServiceResponse(response)
                 .shouldHaveBody_postBlogpost(blogpostId, updatedPayload.getUserId(), updatedPayload.getTitle(),
                         updatedPayload.getBody());
-
     }
 
     @Test

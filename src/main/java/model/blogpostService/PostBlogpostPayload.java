@@ -26,5 +26,4 @@ public class PostBlogpostPayload {
     @JsonProperty("body")
     @Builder.Default
     private String body = randomString(10);
-
 }

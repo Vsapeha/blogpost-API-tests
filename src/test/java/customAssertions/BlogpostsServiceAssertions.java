@@ -41,7 +41,6 @@ public class BlogpostsServiceAssertions extends AbstractAssert<BlogpostsServiceA
                 .noneMatch(String::isEmpty);
 
         softAssertions.assertAll();
-
     }
 
 
@@ -68,7 +67,6 @@ public class BlogpostsServiceAssertions extends AbstractAssert<BlogpostsServiceA
                 .isEqualTo(expectedBody);
 
         softAssertions.assertAll();
-
     }
 
     public void shouldHaveBody_postBlogpost(int id, int userId, String expectedTitle, String expectedBody) {
@@ -94,6 +92,5 @@ public class BlogpostsServiceAssertions extends AbstractAssert<BlogpostsServiceA
                 .isEqualTo(expectedBody);
 
         softAssertions.assertAll();
-
     }
 }

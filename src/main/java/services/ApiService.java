@@ -10,7 +10,6 @@ public class ApiService {
     public RequestSpecification setUp() {
         return RestAssured.given()
                 .filters(
-//                        new AllureRestAssured(),
                         new RequestLoggingFilter(),
                         new ResponseLoggingFilter()
                 );

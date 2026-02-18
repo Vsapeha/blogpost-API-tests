@@ -19,5 +19,4 @@ public class Blogpost {
 
 	@JsonProperty("body")
 	private String body;
-
 }
