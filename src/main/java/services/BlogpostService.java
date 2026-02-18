@@ -31,6 +31,6 @@ public class BlogpostService extends ApiService {
     public AssertableResponse deleteBlogpost(int id) {
         return new AssertableResponse(setUp()
                 .when()
-                .put(String.format("/posts/%d", id)));
+                .delete(String.format("/posts/%d", id)));
     }
 }
