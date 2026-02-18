@@ -27,10 +27,10 @@ public class BlogpostService extends ApiService {
                 .when()
                 .put(String.format("/posts/%d", id)));
     }
-//
-//    public AssertableResponse deleteBlogpost() {
-//        return new AssertableResponse(setUp()
-//                .when()
-//                .delete("/posts"));
-//    }
+
+    public AssertableResponse deleteBlogpost(int id) {
+        return new AssertableResponse(setUp()
+                .when()
+                .put(String.format("/posts/%d", id)));
+    }
 }

@@ -5,7 +5,6 @@ import io.restassured.http.ContentType;
 import model.blogpostService.PostBlogpostPayload;
 import model.blogpostService.PutBlogpostPayload;
 import org.testng.annotations.Test;
-import responses.blogpostsService.Blogpost;
 import services.BlogpostService;
 
 import static conditions.Conditions.contentType;
@@ -52,14 +51,8 @@ public class BlogpostServiceTests extends BaseTest {
     void canUpdateBlogpost_expect_200() {
         // Test data
         int blogpostId = 1;
-        int updatedUserId = 2;
-        String updatedTitle = "UPD title";
-        String updatedBody = "UPD body";
 
-        PutBlogpostPayload updatedPayload = PutBlogpostPayload.builder().id(blogpostId)
-                .userId(updatedUserId)
-                .title(updatedTitle)
-                .body(updatedBody).build();
+        PutBlogpostPayload updatedPayload = PutBlogpostPayload.builder().id(blogpostId).build();
 
         //        when
         response = blogpostService
@@ -70,8 +63,21 @@ public class BlogpostServiceTests extends BaseTest {
 
         assertions
                 .assertBlogpostsServiceResponse(response)
-                .shouldHaveBody_postBlogpost(blogpostId, updatedUserId, updatedTitle, updatedBody);
+                .shouldHaveBody_postBlogpost(blogpostId, updatedPayload.getUserId(), updatedPayload.getTitle(),
+                        updatedPayload.getBody());
 
     }
 
+    @Test
+    void canDeleteBlogpost_expect_200() {
+        int blogpostId = 1;
+
+        response = blogpostService
+                .deleteBlogpost(blogpostId)
+                .shouldHave(statusCode(200));
+
+        //TODO for the real API need I would:
+        // 1) add precondition creating entity to be deleted
+        // 2) after deletion send /get/posts/{id} request to check that the entity is no longer present in DB
+    }
 }
