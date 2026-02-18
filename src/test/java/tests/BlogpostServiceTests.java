@@ -16,6 +16,8 @@ public class BlogpostServiceTests extends BaseTest {
 
     private AssertableResponse response;
 
+    private final int blogpostId = 1;
+
     @Test
     void canGetListOfBlogposts_expect_200() {
         //  when
@@ -50,8 +52,6 @@ public class BlogpostServiceTests extends BaseTest {
     @Test
     void canUpdateBlogpost_expect_200() {
         // Test data
-        int blogpostId = 1;
-
         PutBlogpostPayload updatedPayload = PutBlogpostPayload.builder().id(blogpostId).build();
 
         //        when
@@ -70,8 +70,6 @@ public class BlogpostServiceTests extends BaseTest {
 
     @Test
     void canDeleteBlogpost_expect_200() {
-        int blogpostId = 1;
-
         response = blogpostService
                 .deleteBlogpost(blogpostId)
                 .shouldHave(statusCode(200));
