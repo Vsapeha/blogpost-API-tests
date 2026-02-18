@@ -14,7 +14,7 @@ public class BlogpostServiceTests extends BaseTest {
 
     private AssertableResponse response;
 
-    @Test()
+    @Test
     void canGetListOfBlogposts_expect_200() {
         //  when
         response = blogpostService
