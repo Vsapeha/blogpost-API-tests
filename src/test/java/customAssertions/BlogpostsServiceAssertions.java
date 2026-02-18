@@ -13,7 +13,7 @@ public class BlogpostsServiceAssertions extends AbstractAssert<BlogpostsServiceA
     public BlogpostsServiceAssertions(AssertableResponse actual) {
         super(actual, BlogpostsServiceAssertions.class);
     }
-//todo can 'data > badge objects> points'  be <=0???????
+
     public void shouldHaveBody_getListOfBlogposts() {
         List<Blogpost> responseAsPojo = actual.asPojoList(Blogpost.class);
 
@@ -44,4 +44,56 @@ public class BlogpostsServiceAssertions extends AbstractAssert<BlogpostsServiceA
 
     }
 
+
+    public void shouldHaveBody_postBlogpost(int userId, String expectedTitle, String expectedBody) {
+        Blogpost responseAsPojo = actual.asPojo(Blogpost.class);
+
+        SoftAssertions softAssertions = new SoftAssertions();
+
+        softAssertions
+                .assertThat(responseAsPojo.getId())
+                .as("id")
+                .isNotNull();
+        softAssertions
+                .assertThat(responseAsPojo.getUserId())
+                .as("userId")
+                .isEqualTo(userId);
+        softAssertions
+                .assertThat(responseAsPojo.getTitle())
+                .as("title")
+                .isEqualTo(expectedTitle);
+        softAssertions
+                .assertThat(responseAsPojo.getBody())
+                .as("body")
+                .isEqualTo(expectedBody);
+
+        softAssertions.assertAll();
+
+    }
+
+    public void shouldHaveBody_postBlogpost(int id, int userId, String expectedTitle, String expectedBody) {
+        Blogpost responseAsPojo = actual.asPojo(Blogpost.class);
+
+        SoftAssertions softAssertions = new SoftAssertions();
+
+        softAssertions
+                .assertThat(responseAsPojo.getId())
+                .as("id")
+                .isEqualTo(id);
+        softAssertions
+                .assertThat(responseAsPojo.getUserId())
+                .as("userId")
+                .isEqualTo(userId);
+        softAssertions
+                .assertThat(responseAsPojo.getTitle())
+                .as("title")
+                .isEqualTo(expectedTitle);
+        softAssertions
+                .assertThat(responseAsPojo.getBody())
+                .as("body")
+                .isEqualTo(expectedBody);
+
+        softAssertions.assertAll();
+
+    }
 }
